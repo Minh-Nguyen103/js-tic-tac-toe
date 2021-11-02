@@ -10,8 +10,20 @@ export function getCurrentTurnElement() {
   return document.getElementById('currentTurn');
 }
 export function getCellElementAtIdx(index) {
-  return document.querySelectorAll(`#cellList > li:nth-child(${index + 1})`);
+  return document.querySelector(`#cellList > li:nth-child(${index + 1})`);
 }
 export function getGameStatusElement() {
   return document.getElementById('gameStatus');
+}
+
+export function getReplayButtonElement() {
+  return document.getElementById('replayGame');
+}
+
+export function getStartButtonElement() {
+  return document.getElementById('startGame');
+}
+
+export function getCellListElement() {
+  return document.getElementById('cellList');
 }

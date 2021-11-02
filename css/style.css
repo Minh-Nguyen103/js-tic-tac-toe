@@ -6,7 +6,7 @@
 
 body {
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 ul {
@@ -49,6 +49,14 @@ ul {
   margin-top: 8px;
 }
 
+.game .game-board {
+  display: none;
+}
+
+.game .showBoard {
+  display: block;
+}
+
 .game .board-cells-list {
   display: flex;
   flex-flow: row wrap;
@@ -65,7 +73,7 @@ ul {
 }
 
 .game .board-cells-list > li.win {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(216, 121, 121, 0.3);
 }
 
 /* Add hover effect on cell hover */
@@ -119,13 +127,13 @@ ul {
 
 .game .board-cells-list > li.cross::before,
 .game .game-details .current-turn .cross::before {
-  content: "X";
+  content: 'X';
   color: lightgreen;
 }
 
 .game .board-cells-list > li.circle::before,
 .game .game-details .current-turn .circle::before {
-  content: "O";
+  content: 'O';
   color: red;
 }
 
@@ -166,5 +174,24 @@ ul {
   padding: 8px 16px;
   font-weight: bold;
   margin-top: 4px;
+  cursor: pointer;
+}
+
+.game-start > button {
+  display: none;
+}
+
+.game-start > button.show {
+  display: inline-block;
+}
+
+.game-start > button {
+  border: none;
+  box-shadow: none;
+  background: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-top: 50px;
   cursor: pointer;
 }

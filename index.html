@@ -20,7 +20,7 @@
           <h1>tic tac toe</h1>
 
           <p class="game-status">
-            Status: <span id="gameStatus">LOADING</span>
+            Status: <span id="gameStatus">PLAYING</span>
           </p>
 
           <div class="game-details">
@@ -30,10 +30,15 @@
             </p>
 </div>
 
-          <div class="game-board">
-            <ul id="cellList" class="board-cells-list">
+
+      <div class="game-start">
+        <button id="startGame" class="show" >Start</button>
+      </div>
+
+          <div class="game-board" >
+            <ul id="cellList"  class="board-cells-list">
               <li></li>
-              <li></li>
+              <li></li> 
               <li></li>
               <li></li>
               <li></li>
@@ -52,5 +57,6 @@
     </section>
 
     <script type="module" src="js/main.js"></script>
+    <!-- <script type="module" src="js/main-delegation.js"></script> -->
   </body>
 </html>
