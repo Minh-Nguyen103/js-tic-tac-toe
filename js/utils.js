@@ -24,9 +24,9 @@
 //
 // Example:
 // Input array: cellValues = ['X', 'O', 'O', '', 'X', '', '', 'O', 'X']; represent for
-// |  X  | O  | O  |
-// |     | X  |    |
-// |     | O  | X  |
+// |  X  | O  | O  |   0|1|2
+// |     | X  |    |   3|4|5
+// |     | O  | X  |   6|7|8
 // -----
 // ANSWER:
 // {
@@ -35,6 +35,8 @@
 // }
 //
 
+import { GAME_STATUS, CELL_VALUE } from './constants.js';
+
 // Input: an array of 9 items
 // Output: an object as mentioned above
 export function checkGameStatus(cellValues) {
@@ -42,8 +44,52 @@ export function checkGameStatus(cellValues) {
   // Please feel free to add more helper function if you want.
   // It's not required to write everything just in this function.
 
+  if (!Array.isArray(cellValues) || cellValues.length !== 9) {
+    throw new Error('Invalid cell values');
+  }
+
+  //win
+  const checkSetList = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  const winPositionsList = [];
+
+  checkSetList.forEach((set) => {
+    const first = cellValues[set[0]];
+    const second = cellValues[set[1]];
+    const third = cellValues[set[2]];
+
+    if (first !== '' && first === second && second === third) {
+      winPositionsList.push(set);
+    }
+  });
+
+  if (winPositionsList.length > 0) {
+    const winPositions = winPositionsList[0];
+    const statusGame =
+      cellValues[winPositions[0]] === CELL_VALUE.CROSS ? GAME_STATUS.X_WIN : GAME_STATUS.O_WIN;
+
+    return {
+      status: statusGame,
+      winPositions: winPositionsList,
+    };
+  }
+
+  //playing
+  //end game
+  const isPlaying = cellValues.filter((x) => x === '').length === 0;
   return {
-    status: GAME_STATUS.PLAYING,
+    status: isPlaying ? GAME_STATUS.ENDED : GAME_STATUS.PLAYING,
     winPositions: [],
   };
 }
